@@ -1,0 +1,343 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+    background-color: #81D4FA; 
+}
+
+.tieu-de { 
+    text-align: center;
+    padding: 15px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #004d40; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    /* Nền tiêu đề nhẹ hơn để phân biệt với nước */
+    background-color: #e0f2f7; 
+    border-bottom: 3px solid #b2ebf2;
+}
+
+.dai-duong {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 85px);
+    margin: 0;
+    /* Tạo hiệu ứng nước sâu dần */
+    background: linear-gradient(to bottom, #81D4FA, #4FC3F7); 
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: hidden;
+}
+
+/* --- Thành phần nền --- */
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to top, #002b55, #0099cc);
+  overflow: hidden;
+}
+
+.day-san-ho {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 400px;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* San hô cơ bản */
+.san-ho {
+  position: absolute;
+  bottom: 0;
+  transform-origin: bottom center;
+  animation: lac-lu 4s ease-in-out infinite alternate;
+}
+
+.san-ho img {
+  width: 100%;
+  height: auto;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 8px rgba(0,0,0,0.4));
+}
+
+.sh1 {left: 0%; width: 260px; height: 360px; bottom: -110px; animation-delay: 0s; z-index: 2;}
+.sh2 { left: 25%; width: 180px; height: 200px; bottom: 0px; animation-delay: 0.5s; }
+.sh3 { left: 45%; width: 140px; height: 140px; bottom: -25px; animation-delay: 1s; z-index: 2;}
+.sh4 { left: 65%; width: 90px; height: 200px; bottom: 50px; animation-delay: 1.5s; }
+.sh5 { left: 85%; width: 140px; height: 250px; bottom: 50px; animation-delay: 2s; }
+.sh6 { left: 90%; width: 130px; height: 330px; bottom: -40px; animation-delay: 2s; }
+
+/* Hiệu ứng lắc lư */
+@keyframes lac-lu {
+  0% { transform: rotate(-1deg) translateY(0); }
+  50% { transform: rotate(1deg) translateY(-3px); }
+  100% { transform: rotate(-1deg) translateY(0); }
+}
+
+/* --- Cá và hoạt hình --- */
+/* Cập nhật quy tắc chung cho tất cả cá */
+.ca { 
+    position: absolute;
+    transform: scaleX(1); 
+    animation: boi 10s linear infinite; 
+    z-index: 2; 
+    animation-fill-mode: backwards; 
+}
+
+/* Quy tắc cho từng loài cá */
+.ca-he { 
+    animation-duration: 15s; /* Tốc độ: 15s */
+    animation-delay: -5s; 
+}
+
+.ca-dory { 
+    animation-duration: 18s; /* Tốc độ: 18s */
+    animation-delay: -10s;
+}
+
+.ca-thien-than {
+    animation-duration: 20s; /* Tốc độ: 20s */
+    animation-delay: -5s;
+    transform: scaleX(-1); /* Giữ nguyên lật ngang */
+}
+
+.ca-vang-than-tron {
+    animation-duration: 16s; /* Tốc độ: 16s */
+    animation-delay: -1s;
+}
+
+.cua {
+    position: absolute;
+    transform: scaleX(1); 
+    z-index: 2; 
+    animation-fill-mode: backwards;
+    animation: boicua 10s linear infinite;
+    animation-duration: 20s; /* Tốc độ: 18s */
+    animation-delay: -5s;
+    width: 80px;
+    height: 100px;
+    bottom: -10px;
+}
+
+.muc {
+    position: absolute;
+    transform: scaleX(1); 
+    z-index: 2; 
+    animation-fill-mode: backwards;
+    animation: boimuc 10s linear infinite;
+    animation-duration: 20s; /* Tốc độ: 18s */
+    animation-delay: -5s;
+    width: 90px;
+    height: 130px;
+    bottom: -10px;
+}
+
+@keyframes boi { 
+    0% {
+        transform: translateX(-100%) scaleX(1); /* Bắt đầu từ ngoài bên trái */
+    }
+    49% {
+        transform: translateX(100%) scaleX(1); /* Bơi sang phải */
+    }
+    50% {
+        transform: translateX(100%) scaleX(-1); /* Quay đầu */
+    }
+    99% {
+        transform: translateX(-100%) scaleX(-1); /* Bơi sang trái */
+    }
+    100% {
+        transform: translateX(-100%) scaleX(1); /* Quay lại để lặp */
+    }
+}
+
+@keyframes boicua { 
+    0% {
+        transform: translateX(100%) scaleX(1); /* Bắt đầu từ ngoài bên trái */
+    }
+    49% {
+        transform: translateX(-100%) scaleX(1); /* Bơi sang phải */
+    }
+    50% {
+        transform: translateX(-100%) scaleX(-1); /* Quay đầu */
+    }
+    99% {
+        transform: translateX(100%) scaleX(-1); /* Bơi sang trái */
+    }
+    100% {
+        transform: translateX(100%) scaleX(1); /* Quay lại để lặp */
+    }
+}
+
+@keyframes boimuc {
+    0% {
+        transform: translateY(0) rotate(-3deg);
+    }
+    25% {
+        transform: translateY(-60px) rotate(3deg);  /* bơi lên */
+    }
+    50% {
+        transform: translateY(-90px) rotate(-2deg); /* lên cao hơn */
+    }
+    75% {
+        transform: translateY(-60px) rotate(2deg);  /* bơi xuống */
+    }
+    100% {
+        transform: translateY(0) rotate(-3deg);     /* về đáy */
+    }
+}
+
+/* --- Thợ Lặn --- */
+.tho-lan {
+    position: absolute;
+    top: 50%; /* Vị trí bắt đầu theo chiều dọc */
+    left: 0;   /* Vị trí bắt đầu theo chiều ngang */
+    transform: translateY(-50%) scaleX(1); /* Căn giữa theo chiều dọc và hướng mặc định */
+    z-index: 3; /* Đảm bảo thợ lặn nằm trên cá (cá là z-index: 2) */
+    animation: lan 25s ease-in-out infinite; /* Hoạt hình bơi lặn */
+    
+    /* Để hình ảnh thợ lặn không bị pixel khi co giãn */
+    image-rendering: -webkit-optimize-contrast; 
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+}
+
+.tho-lan img {
+    display: block; /* Loại bỏ khoảng trống dưới ảnh */
+    width: 320px; /* Kích thước thợ lặn (có thể điều chỉnh) */
+    height: 200px;
+    filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.3)); /* Tạo bóng đổ nhẹ */
+}
+
+/* Hoạt hình Lặn */
+@keyframes lan {
+    0% {
+        transform: translateX(-120%) translateY(-50%) scaleX(1); /* Bơi từ trái qua */
+        top: 50%;
+    }
+    25% {
+        transform: translateX(30%) translateY(-60%) scaleX(1);
+        top: 45%;
+    }
+    49.9% {
+        transform: translateX(120%) translateY(-50%) scaleX(1); /* Đến mép phải */
+        top: 50%;
+    }
+    50% {
+        transform: translateX(120%) translateY(-50%) scaleX(-1); /* Lật đầu quay lại */
+        top: 50%;
+    }
+    75% {
+        transform: translateX(30%) translateY(-40%) scaleX(-1);
+        top: 55%;
+    }
+    99.9% {
+        transform: translateX(-120%) translateY(-50%) scaleX(-1); /* Bơi ra trái */
+        top: 50%;
+    }
+    100% {
+        transform: translateX(-120%) translateY(-50%) scaleX(1); /* Reset hướng trước khi lặp lại */
+        top: 50%;
+    }
+}
+
+
+.tho-lan-2 {
+    position: absolute;
+    /* Đặt thợ lặn cố định ở bên phải màn hình */
+    left: 80%;
+    top: 50%;
+    /* Loại bỏ animation-delay cũ nếu có */
+    animation: lan-2 12s ease-in-out infinite alternate; /* Thời gian mới cho hoạt hình lên/xuống */
+    transform: translateY(-50%) scaleX(1); /* Thợ lặn quay mặt sang phải (hoặc -1 nếu muốn quay sang trái) */
+    z-index: 3;
+}
+
+/* Hoạt hình Lặn (Chỉ bơi lên/xuống) */
+@keyframes lan-2 {
+    0% {
+        /* Bắt đầu ở độ sâu trung bình */
+        transform: translateY(-50%) scaleX(1); 
+        top: 20%; 
+    }
+    50% {
+        /* Bơi lên cao hơn */
+        transform: translateY(-50%) scaleX(1); 
+        top: 60%; 
+    }
+    100% {
+        /* Bơi xuống thấp hơn (quay lại 50%) */
+        transform: translateY(-50%) scaleX(1); 
+        top: 20%; 
+    }
+}
+
+/* --- Bong bóng khí --- */
+.bong-bong {
+    position: absolute;
+    bottom: 15%; 
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    opacity: 0;
+    animation: noi-len 8s ease-out forwards;
+    pointer-events: none; 
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.7);
+}
+
+@keyframes noi-len {
+    0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) scale(1.2); /* Nổi lên ngoài khung nhìn */
+        opacity: 0;
+    }
+}
+
+/* Vây vẫy (Vây ngực của cá) */
+.fin-chest {
+    transform-origin: center;
+    animation: vay-vung 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes vay-vung {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(10deg); }
+}
+
+.thanh-dieu-khien {
+    position: absolute;
+    top: 65px; /* Dưới tiêu đề */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10; /* Đảm bảo nút nằm trên mọi thứ */
+    display: flex;
+    gap: 15px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.5); /* Nền bán trong suốt */
+    border-radius: 10px;
+}
+
+.thanh-dieu-khien button {
+    padding: 10px 15px;
+    font-size: 1em;
+    cursor: pointer;
+    border: 2px solid #009688;
+    border-radius: 5px;
+    background-color: #e0f7fa;
+    color: #004d40;
+    transition: background-color 0.3s;
+}
+
+.thanh-dieu-khien button:hover {
+    background-color: #b2ebf2;
+}

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hồ Cá Vui Nhộn</title>
+    <link rel="stylesheet" href="hocanhietdoi.css">
+</head>
+<body>
+    <div class="tieu-de">🌊 Đại Dương Nhiệt Đới 🐟</div>
+
+    <div class="thanh-dieu-khien">
+        <button id="nut-doi-nen">🖼️ Nhấn để Đổi Nền</button>
+
+        <button id="nut-phat-nhac" onclick="togglePlay()">🎵 Nhạc</button>
+    </div>
+    
+    <audio id="nhac-nen" src="nhac.m4a" loop></audio>
+
+    <div class="dai-duong" id="vung-nen">
+        
+        <div class="day-san-ho">
+    <div class="san-ho sh1"><img src="sanho.png"></div>
+    <div class="san-ho sh2"><img src="cayrong.png"></div>
+    <div class="san-ho sh3"><img src="saobien.png"></div>
+    <div class="san-ho sh4"><img src="cayrong1.png"></div>
+    <div class="san-ho sh5"><img src="sanho1.png"></div>
+    <div class="san-ho sh6"><img src="sanho1.png"></div>
+        </div>
+
+        <div class="tho-lan">
+            <img src="tholan1.png" alt="Thợ Lặn" width="320" height="200">
+            </div>
+        <div class="tho-lan-2">
+            <img src="tholan2.png" alt="Thợ Lặn Thứ Hai" width="320" height="200">
+        </div>
+
+        <div class="ca ca-he" style="top: 35%; left: 10%; animation-duration: 15s;">
+           <img src="cahe.png" width="80" height="90" alt="Cá">
+        </div>
+
+        <div class="ca ca-dory" style="top: 60%; left: 80%; animation-duration: 18s; ">
+           <img src="cadory.png" alt="Cá đuôi gái xanh" width="90" height="75">
+        </div>
+
+        <div class="ca ca-thien-than" style="top: 20%; left: 50%; animation-duration: 20s; ">
+           <img src="ca1.png" alt="Cá thiên thần" width="70" height="70">
+        </div>
+
+        <div class="ca ca-vang-than-tron" style="top: 75%; left: 30%; animation-duration: 16s; ">
+           <img src="ca3.png" alt="Cá vàng thân tròn" width="120" height="86">
+        </div>
+        
+        <div class="cua" style="top: 87%; left: 60%; animation-duration: 16s; ">
+           <img src="cua.png" alt="Cua" width="120" height="86">
+        </div>
+
+        <div class="muc" style="top: 20%; left: 30%; animation-duration: 16s; ">
+           <img src="muc.png" alt="Muc" width="120" height="86">
+        </div>
+    </div>
+
+    <script>
+        // Các đường dẫn hình nền
+        const danhSachNen = [
+            'url("nen_1.jpg")', 
+            'url("nen_2.jpg")', 
+            'url("nen_3.jpg")', 
+            'url("nen_4.jpg")',
+            'url("nen_5.jpg")',
+        ];
+        let chiSoNenHienTai = 0;
+        const vungNen = document.getElementById('vung-nen');
+        const nutDoiNen = document.getElementById('nut-doi-nen');
+
+        // Nếu bạn muốn dùng màu CSS như cũ, hãy bỏ qua dòng này hoặc set danhSachNen[0] là rỗng
+        vungNen.style.backgroundImage = danhSachNen[chiSoNenHienTai]; 
+        vungNen.style.backgroundSize = 'cover';
+        vungNen.style.backgroundPosition = 'center';
+
+        // HÀM ĐỔI NỀN
+        nutDoiNen.addEventListener('click', () => {
+            chiSoNenHienTai = (chiSoNenHienTai + 1) % danhSachNen.length;
+            vungNen.style.backgroundImage = danhSachNen[chiSoNenHienTai];
+        });
+
+        // HÀM ĐIỀU KHIỂN NHẠC VÀ THAY ĐỔI BIỂU TƯỢNG (▶ và ⏸)
+        const nhacNen = document.getElementById('nhac-nen');
+        const nutPhatNhac = document.getElementById('nut-phat-nhac'); 
+        let dangPhat = false; // Trạng thái ban đầu: đang ngừng (false)
+        nhacNen.volume = 0.3;
+        function togglePlay() {
+            if (dangPhat) {
+                // Nếu ĐANG PHÁT -> Ngừng (Hiển thị biểu tượng Phát ▶)
+                nhacNen.pause();
+                dangPhat = false;
+                nutPhatNhac.innerHTML = '▶ Phát'; 
+            } else {
+                // Nếu ĐANG NGỪNG -> Phát (Hiển thị biểu tượng Ngừng ⏸)
+                nhacNen.play();
+                dangPhat = true;
+                nutPhatNhac.innerHTML = '⏸ Tạm dừng'; 
+            }
+        }
+        
+        // Hàm tạo Bong bóng khí
+        function taoBongBong() {
+            const bongBong = document.createElement('div');
+            bongBong.className = 'bong-bong'; 
+            const kichThuoc = Math.random() * 20 + 5; 
+            bongBong.style.width = kichThuoc + 'px';
+            bongBong.style.height = kichThuoc + 'px';
+            bongBong.style.left = Math.random() * 90 + 5 + '%'; 
+            bongBong.style.animationDuration = (Math.random() * 4 + 4) + 's';
+            bongBong.style.animationDelay = (Math.random() * 2) + 's'; 
+            document.querySelector('.dai-duong').appendChild(bongBong); 
+
+            setTimeout(() => {
+                bongBong.remove();
+            }, 8000); 
+        }
+
+        setInterval(taoBongBong, 300); 
+    </script>
+</body>
+</html>
